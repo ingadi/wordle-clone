@@ -1,0 +1,40 @@
+.keyboard {
+  grid-area: keyboard;
+  align-self: flex-end;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  min-inline-size: 100%;
+  gap: 0.5rem;
+  margin-block-end: 0.5rem;
+}
+
+.key {
+  cursor: pointer;
+  background-color: hsl(214, 9%, 84%);
+  border: none;
+  outline: none;
+  padding: 1rem;
+  min-inline-size: 2.5rem;
+  min-block-size: 3.5rem;
+  border-radius: 0.2rem;
+  font-weight: bolder;
+  touch-action: manipulation;
+  transition-property: background-color, color;
+}
+
+.correct {
+  background-color: hsl(117, 27%, 54%);
+  color: hsl(0, 0%, 100%);
+}
+.incorrect {
+  background-color: hsl(240, 2%, 49%);
+  color: hsl(0, 0%, 100%);
+}
+
+.exists {
+  background-color: hsl(47, 53%, 58%);
+  color: hsl(0, 0%, 100%);
+}

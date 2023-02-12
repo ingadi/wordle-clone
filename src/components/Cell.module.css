@@ -1,0 +1,64 @@
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  outline: 0.125rem solid hsl(0, 0%, 80%);
+  margin: 0.3rem;
+  padding: 1rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  font-weight: bold;
+  font-size: 2rem;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.cell:not(:empty) {
+  outline-color: hsl(0, 0%, 20%);
+}
+
+.pop {
+  animation: pop 0.12s ease forwards;
+}
+
+.reveal {
+  outline-color: hsl(0, 0%, 20%);
+  animation: flip-reveal 0.5s ease forwards;
+}
+
+.correct {
+  --background-color: hsl(117, 27%, 54%);
+  --outline-color: hsl(117, 27%, 54%);
+}
+.incorrect {
+  --background-color: hsl(240, 2%, 49%);
+  --outline-color: hsl(240, 2%, 49%);
+}
+
+.exists {
+  --background-color: hsl(47, 53%, 58%);
+  --outline-color: hsl(47, 53%, 58%);
+}
+
+@keyframes flip-reveal {
+  55% {
+    transform: rotateX(90deg);
+    background-color: var(--background-color);
+    outline-color: var(--outline-color);
+  }
+  100% {
+    background-color: var(--background-color);
+    outline-color: var(--outline-color);
+    color: hsl(0, 0%, 100%);
+  }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    outline-color: hsl(0, 0%, 20%);
+  }
+}

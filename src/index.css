@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap");
+
+*,
+* > *,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+}

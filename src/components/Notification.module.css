@@ -1,0 +1,21 @@
+.notification {
+  grid-area: notification;
+  display: block;
+  color: white;
+  background-color: hsl(0, 0%, 0%);
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  font-size: smaller;
+  font-weight: bold;
+  animation: reveal-pop 0s linear forwards;
+  visibility: hidden;
+}
+
+@keyframes reveal-pop {
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}

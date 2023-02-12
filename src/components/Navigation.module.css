@@ -1,0 +1,15 @@
+.navigation {
+  grid-area: navigation;
+  border-block-end: 0.063rem solid hsl(214, 9%, 84%);
+  inline-size: 100%;
+  margin-block: 0 2rem;
+  padding-block: 0 1rem;
+}
+
+.logo {
+  font-family: "Merriweather", serif;
+  font-size: large;
+  color: hsl(0, 0%, 20%);
+  font-weight: bold;
+  text-align: center;
+}

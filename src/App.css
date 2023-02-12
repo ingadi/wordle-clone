@@ -1,0 +1,14 @@
+.App {
+  padding: 1rem;
+  min-block-size: 100vb;
+  display: grid;
+  grid-template:
+    "navigation" auto
+    "notification" 2rem
+    "game-grid" 2fr
+    "keyboard" 1fr;
+  justify-items: center;
+  align-items: flex-start;
+  gap: 1rem;
+  overflow: hidden;
+}
