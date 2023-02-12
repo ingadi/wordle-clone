@@ -13,4 +13,10 @@ export default defineConfig({
       "@types": path.resolve(__dirname, "./src/types/index.d.ts"),
     },
   },
+  base: "",
+  root: "",
+  build: {
+    outDir: "./docs",
+    emptyOutDir: true,
+  },
 });
