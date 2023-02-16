@@ -96,16 +96,13 @@ export function useGuesses(
           return newKeyStates;
         });
 
-        setHistory((prevHistory) => {
-          const newHistory = [...prevHistory, currentAttempt];
-          newHistory.length >= max_turns &&
-            onEvent({
-              type: "game-over",
-              msg: solution,
-            });
+        setHistory((prevHistory) => [...prevHistory, currentAttempt]);
 
-          return newHistory;
-        });
+        history.length + 1 >= max_turns &&
+          onEvent({
+            type: "game-over",
+            msg: solution,
+          });
 
         currentAttempt === solution &&
           onEvent({
