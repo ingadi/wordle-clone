@@ -11,5 +11,5 @@ export function useKeyPress(onKeyPress: (keyPress: string) => void) {
     return () => {
       window.removeEventListener("keyup", handleKeyUp);
     };
-  });
+  }, []);
 }
