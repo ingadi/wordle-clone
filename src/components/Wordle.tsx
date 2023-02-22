@@ -9,16 +9,12 @@ import Keyboard from "@components/Keyboard";
 export default function Wordle({ wordList, max_guesses }: Props) {
   const [gameEvent, setGameEvent] = useState<GameEvent>(null);
   const { currentAttempt, guesses, keyStates, history, onKeyPress } =
-    useGuesses(
-      max_guesses,
-      wordList,
-      useCallback((gameEvent) => setGameEvent(gameEvent), [gameEvent])
-    );
+    useGuesses(max_guesses, wordList, (gameEvent) => setGameEvent(gameEvent));
 
   const isInputDisabled =
     gameEvent?.type === "win" || gameEvent?.type === "game-over";
 
-  useKeyPress((key) => !isInputDisabled && onKeyPress(key)); // use callback for this
+  useKeyPress((key) => !isInputDisabled && onKeyPress(key));
 
   const hasError = gameEvent?.type === "error";
 
