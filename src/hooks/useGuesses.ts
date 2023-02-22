@@ -115,7 +115,7 @@ export function useGuesses(
         setCurrentAttempt("");
       }
     },
-    [currentAttempt, history, max_turns, solutionLength]
+    [currentAttempt, history, max_turns, solutionLength, onEvent]
   );
 
   return {
