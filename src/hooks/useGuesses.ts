@@ -25,6 +25,7 @@ export function useGuesses(
 
   const onKeyPress = useCallback(
     (keyValue: string) => {
+      // console.log(keyValue);
       if (!isValidKey(keyValue)) return;
 
       if (!isSpecialKey(keyValue)) {
