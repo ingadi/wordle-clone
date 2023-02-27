@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+// could use an effect event on onKeyPress
 export function useKeyPress(
   onKeyPress: (keyPress: string) => void,
   isInputDisabled: boolean
