@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useGuesses } from "@hooks/useGuesses";
 import { useKeyPress } from "@hooks/useKeyPress";
 import { Guess, GameEvent } from "@types";
@@ -14,7 +14,7 @@ export default function Wordle({ wordList, max_guesses }: Props) {
   const isInputDisabled =
     gameEvent?.type === "win" || gameEvent?.type === "game-over";
 
-  useKeyPress((key) => !isInputDisabled && onKeyPress(key));
+  useKeyPress(onKeyPress, isInputDisabled);
 
   const hasError = gameEvent?.type === "error";
 
@@ -38,6 +38,7 @@ export default function Wordle({ wordList, max_guesses }: Props) {
         keyStates={keyStates}
         onKeyPress={(key) => !isInputDisabled && onKeyPress(key)}
         revealDelay={REVEAL_DELAY * 7}
+        isInputDisabled={isInputDisabled}
       />
     </>
   );

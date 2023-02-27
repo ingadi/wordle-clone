@@ -7,11 +7,12 @@ export default function Keyboard({
   keyStates,
   onKeyPress,
   revealDelay,
+  isInputDisabled,
 }: Props) {
   function handleClick(e: MouseEvent<HTMLButtonElement | HTMLDivElement>) {
     const button = e.target as HTMLButtonElement;
     if (button.tagName !== "INPUT") return;
-    onKeyPress(button.value);
+    !isInputDisabled && onKeyPress(button.value);
   }
 
   return (
@@ -51,4 +52,5 @@ type Props = {
   keyStates: { [key: string]: State };
   onKeyPress: (keyPress: string) => void;
   revealDelay: number;
+  isInputDisabled: boolean;
 };
