@@ -1,10 +1,15 @@
-import { useEffect } from "react";
+import {
+  useEffect,
+  experimental_useEffectEvent as useEffectEvent,
+} from "react";
 
 // could use an effect event on onKeyPress
 export function useKeyPress(
-  onKeyPress: (keyPress: string) => void,
+  handleKeyPress: (keyPress: string) => void,
   isInputDisabled: boolean
 ) {
+  const onKeyPress = useEffectEvent(handleKeyPress);
+
   useEffect(() => {
     function handleKeyUp({ key }: KeyboardEvent) {
       !isInputDisabled && onKeyPress(key);
@@ -15,5 +20,5 @@ export function useKeyPress(
     return () => {
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [onKeyPress, isInputDisabled]);
+  }, [isInputDisabled]);
 }

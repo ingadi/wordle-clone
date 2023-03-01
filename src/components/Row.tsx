@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from "react";
+import { ReactNode } from "react";
 import styles from "@components/Row.module.css";
 
 export default function Row({ children, hasError }: Props) {

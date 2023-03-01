@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 import { Guess, State, GameEvent } from "@types";
 
 export function useGuesses(
@@ -21,109 +21,104 @@ export function useGuesses(
       }))
     )
   );
+
   const gameEventTimerId = useRef<number | null>(null);
 
-  const onKeyPress = useCallback(
-    (keyValue: string) => {
-      if (!isValidKey(keyValue)) return;
+  function handleKeyPress(keyValue: string) {
+    if (!isValidKey(keyValue)) return;
 
-      if (!isSpecialKey(keyValue)) {
-        currentAttempt.length < solutionLength &&
-          setCurrentAttempt(
-            (prevCurrentGuess) =>
-              prevCurrentGuess + keyValue.toLocaleLowerCase()
-          );
-      }
+    if (!isSpecialKey(keyValue)) {
+      currentAttempt.length < solutionLength &&
+        setCurrentAttempt(
+          (prevCurrentGuess) => prevCurrentGuess + keyValue.toLocaleLowerCase()
+        );
+    }
 
-      if (isDelete(keyValue)) {
-        currentAttempt.length > 0 &&
-          setCurrentAttempt((prevCurrentGuess) =>
-            prevCurrentGuess.slice(0, -1)
-          );
-      }
+    if (isDelete(keyValue)) {
+      currentAttempt.length > 0 &&
+        setCurrentAttempt((prevCurrentGuess) => prevCurrentGuess.slice(0, -1));
+    }
 
-      if (isSubmit(keyValue)) {
-        const canSubmitAttempt =
-          history.length < max_turns &&
-          !history.includes(currentAttempt) &&
-          currentAttempt.length === solutionLength &&
-          wordList.includes(currentAttempt);
+    if (isSubmit(keyValue)) {
+      const canSubmitAttempt =
+        history.length < max_turns &&
+        !history.includes(currentAttempt) &&
+        currentAttempt.length === solutionLength &&
+        wordList.includes(currentAttempt);
 
-        if (!canSubmitAttempt) {
-          let msg = "";
-          let type = "error";
+      if (!canSubmitAttempt) {
+        let msg = "";
+        let type = "error";
 
-          if (history.length >= max_turns) {
-            msg = solution;
-            type = "game-over";
-          } else if (history.includes(currentAttempt)) {
-            msg = "Already tried that!";
-          } else if (currentAttempt.length !== solutionLength) {
-            msg = "Not enough letters!";
-          } else if (!wordList.includes(currentAttempt)) {
-            msg = "Not in word list";
-          }
-
-          onEvent({
-            type,
-            msg,
-          } as GameEvent);
-
-          gameEventTimerId.current && clearTimeout(gameEventTimerId.current);
-          gameEventTimerId.current = setTimeout(() => onEvent(null), 1200);
-
-          return;
+        if (history.length >= max_turns) {
+          msg = solution;
+          type = "game-over";
+        } else if (history.includes(currentAttempt)) {
+          msg = "Already tried that!";
+        } else if (currentAttempt.length !== solutionLength) {
+          msg = "Not enough letters!";
+        } else if (!wordList.includes(currentAttempt)) {
+          msg = "Not in word list";
         }
 
-        const currentGuess = toGuess(currentAttempt, solution);
+        onEvent({
+          type,
+          msg,
+        } as GameEvent);
 
-        setGuesses((prevGuesses) => {
-          const newGuesses = [...prevGuesses] as Guess[][];
-          newGuesses[history.length] = currentGuess;
-          return newGuesses;
-        });
+        gameEventTimerId.current && clearTimeout(gameEventTimerId.current);
+        gameEventTimerId.current = setTimeout(() => onEvent(null), 1200);
 
-        setKeyStates((prevKeyStates) => {
-          const newKeyStates = { ...prevKeyStates };
-          currentGuess.forEach(({ letter, state }) => {
-            const _letter = letter!.toLocaleUpperCase();
-            newKeyStates[_letter] = getFinalKeyState(
-              newKeyStates[_letter],
-              state
-            );
-          });
-
-          return newKeyStates;
-        });
-
-        setHistory((prevHistory) => [...prevHistory, currentAttempt]);
-
-        history.length + 1 >= max_turns &&
-          onEvent({
-            type: "game-over",
-            msg: solution,
-          });
-
-        currentAttempt === solution &&
-          onEvent({
-            type: "win",
-            msg: ["Impressive!", "Great!"].at(
-              Math.floor(Math.random() * 2)
-            ) as string,
-          });
-
-        setCurrentAttempt("");
+        return;
       }
-    },
-    [currentAttempt, history, max_turns, solutionLength]
-  );
+
+      const currentGuess = toGuess(currentAttempt, solution);
+
+      setGuesses((prevGuesses) => {
+        const newGuesses = [...prevGuesses] as Guess[][];
+        newGuesses[history.length] = currentGuess;
+        return newGuesses;
+      });
+
+      setKeyStates((prevKeyStates) => {
+        const newKeyStates = { ...prevKeyStates };
+        currentGuess.forEach(({ letter, state }) => {
+          const _letter = letter!.toLocaleUpperCase();
+          newKeyStates[_letter] = getFinalKeyState(
+            newKeyStates[_letter],
+            state
+          );
+        });
+
+        return newKeyStates;
+      });
+
+      setHistory((prevHistory) => [...prevHistory, currentAttempt]);
+
+      history.length + 1 >= max_turns &&
+        onEvent({
+          type: "game-over",
+          msg: solution,
+        });
+
+      currentAttempt === solution &&
+        onEvent({
+          type: "win",
+          msg: ["Impressive!", "Great!"].at(
+            Math.floor(Math.random() * 2)
+          ) as string,
+        });
+
+      setCurrentAttempt("");
+    }
+  }
 
   return {
     currentAttempt,
     keyStates,
     guesses,
     history,
-    onKeyPress,
+    handleKeyPress,
   };
 }
 

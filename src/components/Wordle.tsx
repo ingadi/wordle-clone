@@ -8,13 +8,13 @@ import Keyboard from "@components/Keyboard";
 
 export default function Wordle({ wordList, max_guesses }: Props) {
   const [gameEvent, setGameEvent] = useState<GameEvent>(null);
-  const { currentAttempt, guesses, keyStates, history, onKeyPress } =
+  const { currentAttempt, guesses, keyStates, history, handleKeyPress } =
     useGuesses(max_guesses, wordList, (gameEvent) => setGameEvent(gameEvent));
 
   const isInputDisabled =
     gameEvent?.type === "win" || gameEvent?.type === "game-over";
 
-  useKeyPress(onKeyPress, isInputDisabled);
+  useKeyPress(handleKeyPress, isInputDisabled);
 
   const hasError = gameEvent?.type === "error";
 
@@ -36,7 +36,7 @@ export default function Wordle({ wordList, max_guesses }: Props) {
       />
       <Keyboard
         keyStates={keyStates}
-        onKeyPress={(key) => !isInputDisabled && onKeyPress(key)}
+        onKeyPress={handleKeyPress}
         revealDelay={REVEAL_DELAY * 7}
         isInputDisabled={isInputDisabled}
       />
