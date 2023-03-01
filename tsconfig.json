@@ -19,7 +19,6 @@
     "baseUrl": ".",
     "paths": {
       "@hooks/*": ["src/hooks/*"],
-      "@data/*": ["src/data/*"],
       "@components/*": ["src/components/*"],
       "@types": ["src/types/index.d.ts"]
     }
