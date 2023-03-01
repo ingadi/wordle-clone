@@ -46,7 +46,7 @@ H-->I((Cell))
 
 ## Deployment & Hosting
 
-- Github Actions
+- Github actions
 - Github pages
 
 ## Project goals (Lessons)
