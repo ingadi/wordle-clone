@@ -4,6 +4,7 @@
 
 A React clone of the game wordle (for learning purposes - don't sue me NYT)
 
+[Demo](https://ingadi.github.io/wordle-clone/).
 
 ## Project Structure
 
