@@ -4,26 +4,19 @@
 
 A React clone of the game wordle (for learning purposes - don't sue me NYT)
 
-## Dependecies
-
-- React
-- usehooks-ts
-- Vite
 
 ## Project Structure
 
 ```
 
 ├── components
-│   ├── Cell			<- Renders every letter and it's state.
-│   ├── Grid			<- Renders every row and with it's cell children
+│   ├── Navigation 		<- Renders the 'wordle' title
+│   ├── Cell			<- Renders a single letter input.
+│   ├── Row 			<- Renders every cell and shows game states (loose, win, errors) for a single row
+│   ├── Grid			<- Renders every row
 │   ├── Keyboard 		<- Renders the qwerty keyboard
-│   ├── Navigation 		<- Renders the wordle heading
-│   ├── Notification
-│   ├── Row 			<- Renders game states - loose, win, errors
+│   ├── Notification <- Renders a tooltip to show game states (loose, win, errors) textually
 │   └── Wordle 			<- Renders the Grid and Keyboard
-├── data
-│   └── db.json 		<- List of words for demo rest json service using json-server
 ├── types 			<- TypeScript types.
 └── hooks
  ├── useGuesses.ts 		<- Logic for tracking guesses
@@ -43,17 +36,3 @@ B-->G((Keyboard))
 F-->H((Row))
 H-->I((Cell))
 ```
-
-## Deployment & Hosting
-
-- Github actions
-- Github pages
-
-## Project goals (Lessons)
-
-- Hooks
-- React + TypeScript
-- CI/CD workflow with GitHub Actions
-- Simple react file/directory structure
-- Vite aliases
-- Why/When react re-renders
