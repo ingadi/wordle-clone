@@ -28,11 +28,10 @@ A React clone of the game wordle (for learning purposes - don't sue me NYT)
 ```mermaid
 graph TB
 A((App))-->B((Wordle))
-A-->C((Notification))
-A-->D((Navigation))
-B-->C((Notification))
-B-->F((Grid))
-B-->G((Keyboard))
-F-->H((Row))
-H-->I((Cell))
+A-->C((Navigation))
+B-->D((Notification))
+B-->E((Grid))
+B-->F((Keyboard))
+E-->G((Row))
+G-->H((Cell))
 ```
