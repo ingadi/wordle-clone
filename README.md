@@ -19,8 +19,8 @@ A React clone of the game wordle (for learning purposes - don't sue me NYT)
 │   └── Wordle 			<- Renders the Grid and Keyboard
 ├── types 			<- TypeScript types.
 └── hooks
- ├── useGuesses.ts 		<- Logic for tracking guesses
- └── useKeyPress.ts 		<- Capture all key presses, returns key values
+│   ├── useGuesses.ts 		<- Logic for tracking guesses
+│   └── useKeyPress.ts 		<- Capture all key presses, returns key values
 ```
 
 ## Component Tree
