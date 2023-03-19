@@ -30,7 +30,7 @@ graph TB
 A((App))-->B((Wordle))
 A-->C((Notification))
 A-->D((Navigation))
-B-->E((Notification))
+B-->C((Notification))
 B-->F((Grid))
 B-->G((Keyboard))
 F-->H((Row))
