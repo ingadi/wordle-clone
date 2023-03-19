@@ -18,7 +18,7 @@ A React clone of the game wordle (for learning purposes - don't sue me NYT)
 │   ├── Notification <- Renders a tooltip to show game states (loose, win, errors) textually
 │   └── Wordle 			<- Renders the Grid and Keyboard
 ├── types 			<- TypeScript types.
-└── hooks
+├── hooks
 │   ├── useGuesses.ts 		<- Logic for tracking guesses
 │   └── useKeyPress.ts 		<- Capture all key presses, returns key values
 ```
