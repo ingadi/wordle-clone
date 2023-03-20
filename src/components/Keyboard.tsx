@@ -1,4 +1,3 @@
-import { MouseEvent } from "react";
 import { BsBackspace } from "react-icons/bs";
 import { State } from "@types";
 import Row from "@components/Row";

@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^0.0.0-experimental-6ff1733e6-20230225",
-    "react-dom": "^0.0.0-experimental-6ff1733e6-20230225",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.8.0"
   },
   "devDependencies": {
