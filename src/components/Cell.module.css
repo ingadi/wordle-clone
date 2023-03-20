@@ -6,10 +6,10 @@
   outline: 0.125rem solid hsl(0, 0%, 80%);
   margin: 0.3rem;
   padding: 1rem;
-  width: 3.75rem;
-  height: 3.75rem;
+  inline-size: clamp(2.8rem, 3.5vi, 3.5rem);
+  block-size: clamp(2.8rem, 3.5vi, 3.5rem);
   font-weight: bold;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 6vi, 2rem);
   text-transform: uppercase;
   user-select: none;
 }

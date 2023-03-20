@@ -1,10 +1,10 @@
 .App {
-  padding: 1rem;
+  padding-block: 1rem 0;
   min-block-size: 100vb;
   display: grid;
   grid-template:
     "navigation" auto
-    "notification" 2rem
+    "notification" 1.5rem
     "game-grid" 2fr
     "keyboard" 1fr;
   justify-items: center;

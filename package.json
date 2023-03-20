@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "react": "^0.0.0-experimental-6ff1733e6-20230225",
-    "react-dom": "^0.0.0-experimental-6ff1733e6-20230225"
+    "react-dom": "^0.0.0-experimental-6ff1733e6-20230225",
+    "react-icons": "^4.8.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

@@ -1,4 +1,5 @@
 import { MouseEvent } from "react";
+import { BsBackspace } from "react-icons/bs";
 import { State } from "@types";
 import Row from "@components/Row";
 import styles from "@components/Keyboard.module.css";
@@ -9,27 +10,31 @@ export default function Keyboard({
   revealDelay,
   isInputDisabled,
 }: Props) {
-  function handleClick(e: MouseEvent<HTMLButtonElement | HTMLDivElement>) {
-    const button = e.target as HTMLButtonElement;
-    if (button.tagName !== "INPUT") return;
-    !isInputDisabled && onKeyPress(button.value);
+  function handleClick(key: string) {
+    !isInputDisabled && onKeyPress(key);
   }
 
   return (
-    <div className={styles.keyboard} onClick={handleClick}>
+    <div className={styles.keyboard}>
       {keyBoardLayout.map((row, rowIdx) => (
         <Row key={rowIdx}>
           <div className={styles.row}>
             {row.map((key, keyIdx) => (
-              <input
+              <button
+                key={keyIdx}
                 style={{
                   transitionDelay: `${keyStates[key] ? revealDelay : 0}s`,
                 }}
                 className={`${styles.key} ${styles[keyStates[key] || ""]} `}
-                key={keyIdx}
                 type="button"
-                value={key}
-              />
+                onClick={() => handleClick(key)}
+              >
+                {key === "BACKSPACE" ? (
+                  <BsBackspace className={styles.backspace} />
+                ) : (
+                  key
+                )}
+              </button>
             ))}
           </div>
         </Row>

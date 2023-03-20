@@ -1,24 +1,28 @@
 .keyboard {
   grid-area: keyboard;
-  align-self: flex-end;
+  align-self: flex-start;
 }
 
 .row {
   display: flex;
   justify-content: center;
   min-inline-size: 100%;
-  gap: 0.5rem;
-  margin-block-end: 0.5rem;
+  gap: 0.3rem;
+  margin-block-end: 0.3rem;
 }
 
 .key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   background-color: hsl(214, 9%, 84%);
   border: none;
   outline: none;
-  padding: 1rem;
-  min-inline-size: 2.5rem;
-  min-block-size: 3.5rem;
+  min-inline-size: clamp(1.5rem, 6vi, 2rem);
+  min-block-size: clamp(2rem, 7vi, 2.5rem);
+  padding: 0.6rem;
+  font-size: 0.8rem;
   border-radius: 0.2rem;
   font-weight: bolder;
   touch-action: manipulation;
@@ -37,4 +41,8 @@
 .exists {
   background-color: hsl(47, 53%, 58%);
   color: hsl(0, 0%, 100%);
+}
+
+.backspace {
+  font-size: 1.2rem;
 }
